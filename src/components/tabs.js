@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -42,6 +44,17 @@ const tabsAppender = (selector) => {
 
   //create entry point to append to
   const entryPoint = document.querySelector(selector);
+
+  axios
+    .get("https://lambda-times-api.herokuapp.com/topics")
+    .then((res) => {
+      console.log("TABS RES", res);
+      const newTabs = Tabs(res.data.topics);
+      entryPoint.appendChild(newTabs);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export { Tabs, tabsAppender };
