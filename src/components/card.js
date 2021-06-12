@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -43,7 +45,7 @@ const Card = (article) => {
   authorSpan.textContent = `By ${article.authorName}`;
 
   //add click event listener to card
-  card.addEventListener("click", (e) => {
+  card.addEventListener("click", () => {
     console.log(article.headline);
   });
 
@@ -58,7 +60,56 @@ const cardAppender = (selector) => {
   // However, the articles do not come organized in a single, neat array. Inspect the response closely!
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
-  //
+
+  //make an entryPoint to append to
+  const entryPoint = document.querySelector(selector);
+
+  //fetch data, iterate over it, feed iterations into Card component function and append to entryPoint
+  axios
+    .get("https://lambda-times-api.herokuapp.com/articles")
+    .then((res) => {
+      // console.log("CARD RES", res);
+      const articlesArray = [
+        res.data.articles.javascript,
+        res.data.articles.bootstrap,
+        res.data.articles.technology,
+        res.data.articles.jquery,
+        res.data.articles.node,
+      ];
+
+      articlesArray.forEach((index) => {
+        index.forEach((articleObj) => {
+          const newArticle = Card(articleObj);
+          entryPoint.appendChild(newArticle);
+        });
+      });
+
+      //Not DRY, TRY AGAIN
+
+      // res.data.articles.javascript.forEach((articleObj) => {
+      //   const newArticle = Card(articleObj);
+      //   entryPoint.appendChild(newArticle);
+      // });
+      // res.data.articles.bootstrap.forEach((articleObj) => {
+      //   const newArticle = Card(articleObj);
+      //   entryPoint.appendChild(newArticle);
+      // });
+      // res.data.articles.technology.forEach((articleObj) => {
+      //   const newArticle = Card(articleObj);
+      //   entryPoint.appendChild(newArticle);
+      // });
+      // res.data.articles.jquery.forEach((articleObj) => {
+      //   const newArticle = Card(articleObj);
+      //   entryPoint.appendChild(newArticle);
+      // });
+      // res.data.articles.node.forEach((articleObj) => {
+      //   const newArticle = Card(articleObj);
+      //   entryPoint.appendChild(newArticle);
+      // });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export { Card, cardAppender };

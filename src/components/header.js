@@ -25,6 +25,9 @@ const Header = (title, date, temp) => {
   tempSpan.classList.add("temp");
   tempSpan.textContent = temp;
 
+  //add some padding to the headerDiv
+  headerDiv.style.padding = "3% 0";
+
   //append new elements to headerDiv to create markup
   headerDiv.appendChild(dateSpan);
   headerDiv.appendChild(h1);
