@@ -78,7 +78,12 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
+   The Document Object Model is the blueprint of the HTML built by the browser as a Javascript Object. Everything the browser represents on the screen is based on the DOM. It is the interface that we use to change what is on the screen based on user input using javascript.
 2. What is an event?
+   A javascript event represents user interactions or other occurences with a website. Clicks, mouse moves, scrolls, drags, drops, timeouts, etc. are all events that when triggered are handled by our javascript code to create a desired response and a dynamic, functional, and interactive web page.
 3. What is an event listener?
+   An event listener is the process used to track events and perform an action when that event occurs. Event listeners are added to the event target. When the event type being listened for is triggered on the event target, a callback function (event handler) fires and the callback's specified action is performed.
 4. Why would we convert a NodeList into an Array?
+   A NodeList is array-like, but doesn't have the same variety of methods as a real Array. NodeLists have indicies, a length property, and access to .forEach(), but if we wanted to use other advanced array methods on it (such as .map() or .filter()) we would have to convert it to a real array using Array.from(NodeList).
 5. What is a component?
+   A component is a stand-alone package of HTML, CSS, and Javascript brought together to be reusable in a website or application.
