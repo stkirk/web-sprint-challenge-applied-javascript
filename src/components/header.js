@@ -51,6 +51,7 @@ const headerAppender = (selector) => {
   //instantiate DOM element with selector parameter
   const entryPoint = document.querySelector(selector);
 
+  //append newHeader component to the entryPoint
   entryPoint.appendChild(newHeader);
 };
 
