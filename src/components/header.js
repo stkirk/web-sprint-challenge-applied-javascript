@@ -45,12 +45,10 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  //create date variable to pass in current date
+  const todaysDate = new Date().toDateString();
   //create newHeader with Header component fuction
-  const newHeader = Header(
-    "The Lambda Herald",
-    "Saturday June 12, 2021",
-    "68 degrees"
-  );
+  const newHeader = Header("The Lambda Herald", todaysDate, "68° F");
   //instantiate DOM element with selector parameter
   const entryPoint = document.querySelector(selector);
 
